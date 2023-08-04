@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:helper/auth/abc/cubit/session_cubit.dart';
 import 'package:helper/data/mocks/pattern.dart';
 import 'package:helper/pages/change_info_page.dart';
 import 'package:helper/pages/request_login_page.dart';
 import 'package:helper/utils/cubit/get_data/get_data_cubit.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 import 'package:helper/utils/widgets/pfp_widget.dart';
 import 'package:helper/utils/widgets/stats_row_widget.dart';
 import 'package:flutter/material.dart';

@@ -1,10 +1,9 @@
 import 'dart:convert';
 
+import 'package:helper/data/modules.dart';
 import 'package:helper/data/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
-
-import '../data/modules.dart';
 
 class AuthRepository {
   static Future<String> loadUsername() async {
@@ -66,6 +65,25 @@ class AuthRepository {
       }
     } catch (exp) {
       throw Exception('Failed to request network call: Get List Words');
+    }
+  }
+
+  static Future<void> submitRegister(RegisterInfo registerInfo) async {
+    final body = registerInfo.toJson();
+    final uriServer =
+        Uri.parse('https://codedao-server.onrender.com/user/register');
+
+    try {
+      final response = await http.post(
+        uriServer,
+        body: jsonEncode(body),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode == 300) {
+        throw Exception('Account existed !');
+      }
+    } catch (exp) {
+      rethrow;
     }
   }
 }

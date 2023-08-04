@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:helper/auth/cubit/auth_cubit.dart';
-import 'package:helper/auth/login/bloc/login_bloc.dart';
 import 'package:helper/components/forms/login_form.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/utils/bloc/login/login_bloc.dart';
+import 'package:helper/utils/cubit/auth/auth_cubit.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:helper/auth/abc/cubit/session_cubit.dart';
 import 'package:helper/components/customs/dialog_custom.dart';
 import 'package:helper/components/word_search_card.dart';
 import 'package:helper/data/modules.dart';
@@ -7,6 +6,7 @@ import 'package:helper/pages/add_manual_page.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/utils/cubit/get_data/get_data_cubit.dart';
 import 'package:helper/utils/cubit/search_manage/search_cubit.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 
 class SearchTab extends StatefulWidget {
   const SearchTab({super.key});

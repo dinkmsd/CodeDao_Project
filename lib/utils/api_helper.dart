@@ -33,21 +33,6 @@ class ApiHelper {
     } catch (exp) {
       throw Exception('Failed to request network call: $exp');
     }
-
-    // if (response.statusCode == 200) {
-    //   const snackBar = SnackBar(
-    //     content: Text('Login successful !'),
-    //   );
-    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    //   Navigator.pushNamedAndRemoveUntil(
-    //       context, NamedRoute.dashboardPage, (route) => false);
-    // } else {
-    //   const snackBar = SnackBar(
-    //     content: Text('Phone or Password was wrong !'),
-    //   );
-    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
-    //   //
-    // }
   }
 
   static Future<List<NewInfo>> getListNews() async {
@@ -122,15 +107,17 @@ class ApiHelper {
     }
   }
 
-  static Future<void> updateListWords(NewWordInfo word) async {
+  static Future<void> updateListWords(String username, NewWordInfo word) async {
     try {
       var url = Uri(
           scheme: 'https',
-          host: '64a8ddc7dca581464b86077c.mockapi.io',
-          path: '/words/${word.id}');
-      await http.put(url,
-          body: jsonEncode(word.toJson()),
+          host: 'codedao-server.onrender.com',
+          path: '/word-update/$username/${word.word}');
+      final body = {'favourite': word.favourite};
+      final response = await http.put(url,
+          body: jsonEncode(body),
           headers: {'Content-Type': 'application/json'});
+      print(response.body);
     } catch (exp) {
       throw Exception('Failed to request network call');
     }

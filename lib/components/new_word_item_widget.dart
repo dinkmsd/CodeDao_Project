@@ -1,6 +1,10 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/data/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:helper/pages/word_detail.dart';
+import 'package:helper/utils/cubit/get_data/get_data_cubit.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
+import 'package:helper/utils/cubit/word_update/word_update_cubit.dart';
 
 class NewWordItemWidget extends StatefulWidget {
   final NewWordInfo word;
@@ -20,15 +24,17 @@ class _NewWordItemWidgetState extends State<NewWordItemWidget> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return WordDetailPage(
-                newWordInfo: widget.word,
+              return BlocProvider(
+                create: (context) => WordUpdateCubit(
+                    sessionCubit: context.read<SessionCubit>(),
+                    getDataCubit: context.read<GetDataCubit>()),
+                child: WordDetailPage(
+                  newWordInfo: widget.word,
+                ),
               );
             },
           ),
         );
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return WordDetailPage(newWordInfo: widget.word);
-        }));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 10),

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/app_navigator.dart';
-import 'package:helper/auth/abc/cubit/session_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 
 void main() {
   runApp(const MyApp());

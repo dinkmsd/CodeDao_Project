@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:helper/auth/abc/cubit/session_cubit.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';

@@ -6,14 +6,23 @@ class LoginInfo {
 
 class RegisterInfo {
   String fullName;
-  String phoneNumber;
+  String username;
   String email;
   String password;
   RegisterInfo(
       {required this.fullName,
-      required this.phoneNumber,
+      required this.username,
       required this.email,
       required this.password});
+
+  Map<String, dynamic> toJson() {
+    return {
+      'fullname': fullName,
+      'username': username,
+      'email': email,
+      'password': password,
+    };
+  }
 }
 
 class UserInfo {

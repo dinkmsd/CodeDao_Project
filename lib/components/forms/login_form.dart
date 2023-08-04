@@ -1,12 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:helper/auth/abc/cubit/session_cubit.dart';
-import 'package:helper/auth/cubit/auth_cubit.dart';
 import 'package:helper/components/forgot_password.dart';
+import 'package:helper/utils/auth/form_submission_status.dart';
+import 'package:helper/utils/bloc/login/login_bloc.dart';
+import 'package:helper/utils/cubit/auth/auth_cubit.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 import 'package:helper/utils/style_custom.dart';
 import 'package:flutter/material.dart';
-
-import '../../auth/form_submission_status.dart';
-import '../../auth/login/bloc/login_bloc.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -136,7 +135,7 @@ class _LoginFormState extends State<LoginForm> {
               child: BlocBuilder<LoginBloc, LoginState>(
                 builder: (context, state) {
                   return state.formStatus is FormSubmitting
-                      ? const CircularProgressIndicator()
+                      ? const Center(child: CircularProgressIndicator())
                       : ElevatedButton(
                           // onPressed: submitLogin,
                           onPressed: () {
@@ -167,15 +166,18 @@ class _LoginFormState extends State<LoginForm> {
               onPressed: () {
                 context.read<SessionCubit>().skipAuthentice();
               },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Skip',
-                    style: StyleCustom.blueUnderline(),
-                  ),
-                  const Icon(Icons.arrow_forward),
-                ],
+              child: SizedBox(
+                width: 100,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Skip',
+                      style: StyleCustom.blueUnderline(),
+                    ),
+                    const Icon(Icons.arrow_forward),
+                  ],
+                ),
               ),
             ),
           ],

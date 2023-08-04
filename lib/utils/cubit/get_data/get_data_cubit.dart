@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:helper/auth/abc/cubit/session_cubit.dart';
 import 'package:helper/data/modules.dart';
 import 'package:helper/utils/api_helper.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 import 'package:meta/meta.dart';
 
 part 'get_data_state.dart';
@@ -34,41 +34,6 @@ class GetDataCubit extends Cubit<GetDataState> {
     try {
       if (sessionCubit.state is Authenticated) {
         emit(LoadingData());
-        final listWords = await ApiHelper.getListWords(
-            (sessionCubit.state as Authenticated).user.username);
-        emit(LoadDataSuccessed(listWords: listWords));
-      } else {
-        emit(UnauthGetDateState());
-      }
-    } catch (exp) {
-      emit(LoadDataFailed());
-    }
-  }
-
-  void onDataUpdated(NewWordInfo dataToUpdate) async {
-    try {
-      if (sessionCubit.state is Authenticated) {
-        emit(LoadingData());
-        await ApiHelper.updateListWords(dataToUpdate);
-
-        final listWords = await ApiHelper.getListWords(
-            (sessionCubit.state as Authenticated).user.username);
-        emit(LoadDataSuccessed(listWords: listWords));
-      } else {
-        emit(UnauthGetDateState());
-      }
-    } catch (exp) {
-      emit(LoadDataFailed());
-    }
-  }
-
-  void onDataDeleted(String word) async {
-    try {
-      if (sessionCubit.state is Authenticated) {
-        emit(LoadingData());
-        await ApiHelper.deleteListWords(
-            (sessionCubit.state as Authenticated).user.username, word);
-
         final listWords = await ApiHelper.getListWords(
             (sessionCubit.state as Authenticated).user.username);
         emit(LoadDataSuccessed(listWords: listWords));

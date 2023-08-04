@@ -2,6 +2,8 @@ import 'package:helper/components/verify.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatelessWidget {
+  const ForgotPassword({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,23 +15,23 @@ class ForgotPassword extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(
-              'Enter your numberphone to reset your password',
+            const Text(
+              'Enter your username or email to reset your password',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextFormField(
-              decoration: InputDecoration(
-                labelText: 'Numberphone',
+              decoration: const InputDecoration(
+                labelText: 'Username or emai',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
-              child: Text('Reset Password'),
+              child: const Text('Reset Password'),
               onPressed: () {
                 Navigator.push(
                   context,

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/pages/dashboard_page.dart';
+import 'package:helper/utils/auth/auth_navigator.dart';
+import 'package:helper/utils/cubit/auth/auth_cubit.dart';
 import 'package:helper/utils/cubit/get_data/get_data_cubit.dart';
-
-import 'auth/abc/cubit/session_cubit.dart';
-import 'auth/auth_navigator.dart';
-import 'auth/cubit/auth_cubit.dart';
+import 'package:helper/utils/cubit/session/session_cubit.dart';
 
 class AppNavigator extends StatelessWidget {
   const AppNavigator({super.key});
