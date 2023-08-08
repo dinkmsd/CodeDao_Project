@@ -165,7 +165,7 @@ class ApiHelper {
           word: body[0]['word'],
           definition: body[0]['meanings'][0]['definitions'][0]['definition'],
           type: body[0]['meanings'][0]['partOfSpeech'],
-          example: body[0]['meanings'][0]['definitions'][0]['example']);
+          example: body[0]['meanings'][0]['definitions'][0]['example'] ?? '');
       return word;
     } else {
       throw Exception('Bad response');

@@ -7,7 +7,6 @@ import 'package:helper/utils/cubit/session/session_cubit.dart';
 import 'package:helper/utils/widgets/pfp_widget.dart';
 import 'package:helper/utils/widgets/stats_row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UserInfoTab extends StatefulWidget {
   const UserInfoTab({super.key});
@@ -17,11 +16,6 @@ class UserInfoTab extends StatefulWidget {
 }
 
 class _UserInfoTabState extends State<UserInfoTab> {
-  Future<String> loadUsername() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('username') ?? '';
-  }
-
   @override
   void initState() {
     // TODO: implement initState
