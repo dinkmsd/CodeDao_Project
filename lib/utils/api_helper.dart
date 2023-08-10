@@ -14,6 +14,29 @@ class ApiHelper {
     prefs.setString('username', username);
   }
 
+  static Future<void> changePassword(
+      String currentPassword, String newPassword, String username) async {
+    try {
+      final body = {
+        'currentPassword': currentPassword,
+        'newPassword': newPassword
+      };
+      final uriServer = Uri.parse(
+          'https://codedao-server.onrender.com/change-password/$username');
+      final response = await http.put(
+        uriServer,
+        body: jsonEncode(body),
+        headers: {'Content-Type': 'application/json'},
+      );
+      if (response.statusCode != 200) {
+        final responseBody = jsonDecode(response.body);
+        throw Exception(responseBody['message']);
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   static Future<void> loginUser(LoginInfo loginInfo) async {
     try {
       final body = {
@@ -40,10 +63,13 @@ class ApiHelper {
       var url = Uri(
           scheme: 'https', host: 'codedao-server.onrender.com', path: '/news');
       http.Response response = await http.get(url);
+
       if (response.statusCode == 200) {
         var body = jsonDecode(response.body);
+
         List<NewInfo> listNews = <NewInfo>[];
         for (var item in body) {
+          print(item);
           var w = NewInfo.formJson(item);
           listNews.add(w);
         }

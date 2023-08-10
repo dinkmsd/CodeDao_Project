@@ -7,7 +7,7 @@ NewInfo titleDemo = NewInfo(
     imageAddress: 'assets/images/thumb.png');
 
 UserInfo userInfo = UserInfo(
-    profilePic: 'assets/images/thibo.png',
+    profilePic: 'assets/images/pfp.png',
     fullName: "My Full Name",
     phoneNumber: '1234567890',
     email: 'email@email.com',

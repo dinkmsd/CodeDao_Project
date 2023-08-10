@@ -26,9 +26,13 @@ class _ReadPageState extends State<ReadPage> {
             const SizedBox(
               height: 10,
             ),
-            Text(
-              widget.newInfo.title,
-              style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14.0),
+              child: Text(
+                widget.newInfo.title,
+                style:
+                    const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
             ),
             Padding(
                 padding:

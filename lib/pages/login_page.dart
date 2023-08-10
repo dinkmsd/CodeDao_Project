@@ -29,16 +29,9 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 50,
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height / 5,
-                    child: const Text(
-                      'Logo',
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+                  Image.asset('assets/images/logo.png'),
                   const SizedBox(
-                    height: 32,
+                    height: 40,
                   ),
                   const LoginForm(),
                 ],

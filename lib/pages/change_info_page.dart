@@ -1,10 +1,11 @@
-import 'package:helper/data/mocks/pattern.dart';
+import 'package:helper/data/user.dart';
 import 'package:helper/utils/widgets/custom_text_field_widget.dart';
 import 'package:helper/utils/widgets/pfp_widget.dart';
 import 'package:flutter/material.dart';
 
 class ChangeUserInfoPage extends StatelessWidget {
-  const ChangeUserInfoPage({super.key});
+  final User userInfo;
+  const ChangeUserInfoPage({super.key, required this.userInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,19 @@ class ChangeUserInfoPage extends StatelessWidget {
                   height: 20,
                 ),
                 ProfileWidget(
-                    imagePath: userInfo.profilePic,
+                    imagePath: 'assets/images/thibo.png',
                     onClicked: () {},
                     icon: Icons.camera),
+                const SizedBox(
+                  height: 24,
+                ),
+                Text(
+                  userInfo.username,
+                  style: const TextStyle(
+                    color: Colors.grey,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
                 const SizedBox(
                   height: 24,
                 ),
@@ -37,8 +48,8 @@ class ChangeUserInfoPage extends StatelessWidget {
                       bottom: 40,
                     ),
                     child: CustomTextField(
-                      label: 'User Name',
-                      text: userInfo.fullName,
+                      label: 'Fullname',
+                      text: userInfo.fullname,
                       onChanged: (value) {
                         name = value;
                       },
@@ -50,9 +61,8 @@ class ChangeUserInfoPage extends StatelessWidget {
                     bottom: 10,
                   ),
                   child: CustomTextField(
-                    label: 'About:',
-                    text: userInfo.about,
-                    maxLines: 5,
+                    label: 'Email:',
+                    text: userInfo.email,
                     onChanged: (value) {
                       about = value;
                     },
@@ -66,8 +76,8 @@ class ChangeUserInfoPage extends StatelessWidget {
                   children: [
                     ElevatedButton(
                         onPressed: () {
-                          userInfo.fullName = name;
-                          userInfo.about = about;
+                          // userInfo.fullName = name;
+                          // userInfo.about = about;
                           Navigator.pop(context);
                         },
                         child: const Text("Save")),

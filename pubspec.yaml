@@ -41,6 +41,7 @@ dependencies:
   pull_to_refresh: ^2.0.0
   flip_card: ^0.6.0
   shared_preferences: ^2.2.0
+  future_loading_dialog: ^0.2.4
 
 dev_dependencies:
   flutter_test:

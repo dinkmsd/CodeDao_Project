@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:helper/data/mocks/pattern.dart';
 import 'package:helper/pages/change_info_page.dart';
+import 'package:helper/pages/change_password_page.dart';
 import 'package:helper/pages/request_login_page.dart';
 import 'package:helper/utils/cubit/get_data/get_data_cubit.dart';
 import 'package:helper/utils/cubit/session/session_cubit.dart';
@@ -49,7 +50,7 @@ class _UserInfoTabState extends State<UserInfoTab> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return const ChangeUserInfoPage();
+                      return ChangeUserInfoPage(userInfo: user);
                     },
                   ),
                 );
@@ -79,11 +80,38 @@ class _UserInfoTabState extends State<UserInfoTab> {
                 ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  context.read<GetDataCubit>().logoutHandle();
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ElevatedButton(
+                onPressed: () async {
+                  Navigator.push(context, MaterialPageRoute(
+                    builder: (context) {
+                      return ChangePasswordPage(
+                        userInfo: user,
+                      );
+                    },
+                  ));
                 },
-                child: const Text('Logout')),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey[900],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5))),
+                child: const Text('Change Password'),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: OutlinedButton(
+                  onPressed: () async {
+                    context.read<GetDataCubit>().logoutHandle();
+                  },
+                  style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.red, width: 2)),
+                  child: const Text(
+                    'Log Out',
+                    style: TextStyle(color: Colors.red),
+                  )),
+            ),
           ],
         ),
       );

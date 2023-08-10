@@ -24,10 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 const SizedBox(
                   height: 50,
                 ),
-                SizedBox(
-                    width: double.infinity,
-                    height: MediaQuery.of(context).size.height / 7,
-                    child: const Text('Hello')),
+                Image.asset('assets/images/logo.png'),
                 const SizedBox(
                   height: 32,
                 ),

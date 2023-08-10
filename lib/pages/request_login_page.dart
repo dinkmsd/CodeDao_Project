@@ -14,15 +14,22 @@ class _RequestLoginPageState extends State<RequestLoginPage> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text('You need login to use this feature'),
+          const SizedBox(
+            height: 12,
+          ),
           BlocBuilder<SessionCubit, SessionState>(
             builder: (context, state) {
               return ElevatedButton(
                 onPressed: () {
                   context.read<SessionCubit>().isAuthenticating();
-                  // Navigator.pushNamed(context, NamedRoute.authNavigatorPage);
                 },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueGrey[900],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5))),
                 child: const Text('Login'),
               );
             },
